@@ -1,0 +1,55 @@
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-image: linear-gradient(#614385, #516395);
+    background-size: cover;
+    color: white;
+    text-shadow: 2px 2px 3px black;
+}
+
+.header {
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 50px;
+    text-align: center;
+}
+
+h2 {
+	text-align: center;
+	margin-top: 5%;
+}
+
+.imgheader {
+    height: 150px;
+    width: 150px;
+    vertical-align: middle;
+}
+
+.customerInput {
+	background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+	margin: auto;
+    border-spacing: 10px;
+    border: 2px solid;
+}
+
+td {
+	padding: 10px;
+    border: 1px solid;
+
+}
+
+.typeChoose {
+	visibility: hidden;
+	
+}
+
+.button {
+	margin-top: 5%;
+	margin-bottom: 5%;
+	text-align: center;
+	
+}
+
+.bottom {
+    text-align: center;
+	margin-top: 5%;
+}
