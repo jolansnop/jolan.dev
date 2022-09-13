@@ -1,0 +1,111 @@
+html {
+    min-height: 100%;
+
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-image: linear-gradient(#614385, #516395);
+    background-size: cover;
+    color: white;
+    text-shadow: 2px 2px 3px black;
+}
+
+.header {
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 50px;
+    text-align: center;
+}
+
+.content, .extra {
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+h2 {
+	text-align: center;
+}
+
+.imgheader {
+    height: 150px;
+    width: 150px;
+    vertical-align: middle;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 500px;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+
+}
+
+.modal-header .title {
+    font-size: 1.5rem;
+}
+
+.modal-header .close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color:rgb(0, 0, 0);
+    text-shadow: none;
+    
+}
+
+.catpic {
+    width: 500px;
+    max-width: 100%;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    display: block;
+    
+}
+
+button {
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+    text-shadow: 2px 2px 3px black;
+    background-color: rgb(0, 153, 255);
+    border: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    padding: 0px 7px;
+
+}
+
+.morebutton {
+    font-size: 1.5rem;
+    font-weight: bold;
+
+}
+
+button:hover {
+    background-color: rgb(0, 255, 234);
+
+}

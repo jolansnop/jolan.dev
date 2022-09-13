@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<title>Julien Senopati</title>
+		<link rel="icon" type="image/x-icon" href="imgs/logo.png">
+		<link href="style.css" type="text/css" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+		
+		<script defer src="scripts.js">
+		</script>
+			
+	</head>
+	
+	<body>
+
+        <div class="extra">
+        <h1>Miscellaneous Fixes</h1>
+					<p>I like to consider myself my friend group's resident troubleshooter. Here you'll find a list of miscellaneous fixes.</p>
+                    <p>These are all random things, but mostly pertaining to troubleshooting various computer related issues.</p>
+                    <p>Most of these were found through trial and error and/or extensive googling.</p>
+                    <p>If I can save you some time with one of these solutions, then mission accomplished!</p>
+
+					<br>
+
+                    <h2>PC Crash / Error Fixes</h2>
+
+                    <h3>Graphics Driver Crash during use with Nvidia RTX 3070TI</h3>
+                    <p>Problem: After ~30 of gameplay of high framerate gameplay (VALORANT), graphics drivers crash, requiring full system reboot.</p>
+                    <p>Solution: Change PCIe mode in BIOS from Auto or PCIe Gen 4 to Gen 3.</p>
+                    <p>Diagnosis: It seems like the problem was caused by using a PCIe Gen 3 riser cable with a PCIe Gen 4 Motherboard slot.</p>
+                    <p>System Information: X570 AORUS ELITE, Ryzen 7 3700X, EVGA RTX 3070TI FTW3, Lian Li PC011 Dynamic (Source of Riser Cable)</p>
+
+                    <br>
+
+                    <h3>Intermittent BSOD / Blue Screen System Crashes with Ryzen 5 3600</h3>
+                    <p>Problem: System will crash at random with various error codes, requiring full system reboot.</p>
+                    <p>Solution: Change Windows power plan from Ryzen (Balanced) to Balanced.</p>
+                    <p>Diagnosis: Looks like an issue with the AMD-supplied power plans causes the CPU unit to crash. Changing to a windows power plan such as High Performance or Balanced reduces BSOD frequency drastically.</p>
+                    <p>System Information: B350M PRO VDH, Ryzen 5 3600, EVGA RTX 2060 Super XC ULTRA</p>
+		</div>
+
+        
+
+    </body>
+</html>
