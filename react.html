@@ -73,7 +73,7 @@
                             </code>
                         </pre>
                     <p>For this tutorial, we're going to keep it simple and just place our source tags near the bottom.</p>
-                    <p>You might notice that the last line there is importing something called Babel. We're going to use Babel, because some of our code is going to be JSX, which is essentially React's way of putting HTML inside of JavaScript. It'll come in handy as Babel is a JavaScript transcompiler that essentially can translate the latest JavaScript into whatever potentially older JavaScript the browser is compatible with. It's a compatibility guarantee, and is what's going to let us get away with some of the weird hybrid html-js we're coding.</p>
+                    <p>You might notice that the last line there is importing something called Babel. We're going to use Babel, because some of our code is going to be JSX, which is essentially React's way of putting HTML inside of JavaScript. It'll come in handy as Babel is a JavaScript transcompiler that essentially can translate the latest JavaScript into whatever potentially older JavaScript the browser is compatible with. It's a compatibility guarantee, and is what's going to let us get away with some of the weird hybrid HTML/JS we're coding.</p>
 
 
                     <h3>Step 2: Create and Add a Component</h3>
@@ -109,12 +109,12 @@
                                 
                                         if(this.state.clickMe){
                                             return (
-                                            <h2>Powered by React.js</h2>
+                                                &lt;h2&gtPowered by React.js&lt;/h2&gt;
                                             )
                                         }
                                 
                                         return (
-                                            <button onClick={()=> this.setState({clickMe: true})}>Click Me!</button>
+                                            &lt;button onClick={()=> this.setState({clickMe: true})}&gt;Click Me!&lt;/button&gt;
                                 
                                         )
                                     }
@@ -124,13 +124,100 @@
                         </pre>
 
                     <h3>Step 3: Understand</h3>
-                    <p>Okay, let's break it down, step by step, and make sure we know what's going on.</p>
+                    <p>Okay, let's break down what we have so far, step by step, and make sure we know what's going on.</p>
                     <p>We have our imports set up. React's library is loaded, ReactDOM is loaded, and Babel is loaded. We already know what Babel is for, so let's briefly talk about the others. </p>
                     <p>Well, the React library is... React. Without this import, all the component code in Step 2 simply won't work.</p>
                     <p>ReactDOM is a package that handles DOM specific methods, namely in our case, <mark>render()</mark>.</p>
                     <p>A quick review of DOM: DOM stands for Document Object Model. This is the data representation of everything on the website. By loading ReactDOM, we can manipulate the DOM (and by extension, the site itself) by using React-specific methods.</p>
                     <p>Alright, we're up to speed. Let's break down the React code itself.</p>
                     
+                        <pre>
+                            <code class="language-jsx">
+                                
+                                class LearnReact extends React.Component {
+                                    constructor(props){
+                                        super(props);
+                                        this.state = {
+                                            clickMe: false
+                                        }
+                                    }
+                                </code>
+                            </pre>
+
+                    <p>This first chunk is the Component itself. We have created a new class which inherits React.Component, and we gave it a constructor which has "props". <mark>Props</mark> is short for properties. It's really straightforward - Our class has properties. Kind of like HTML attributes, or function arguments in vanilla JS. </p>
+                    <p>We need the constructor so that the properties are initiated. By including <mark>super(props)</mark>, we are executing the parent component's <mark>(React.Component)</mark> constructor function. This makes sure our component, <mark>LearnReact</mark> can do anything <mark>React.Component</mark> can.</p>
+                    <p>React properties are stored in an object called <mark>state</mark>.</p>
+                    <p>We have only 1 property, which is the <mark>clickMe</mark> property. It's a boolean, and we're initializing it as <mark>false</mark>.</p>
+
+                        <pre>
+                            <code class="language-jsx">
+                                
+                                    render(){
+                                
+                                        if(this.state.clickMe){
+                                            return (
+                                                &lt;h2&gtPowered by React.js&lt;/h2&gt;
+                                            )
+                                        }
+                            </code>
+                        </pre>
+
+                    <p>The <mark>render()</mark> section is for everything we want React to output. This chunk of code is checking if the <mark>clickMe</mark> property is set to true - and if it is, the ReactDOM should render out a new chunk of HTML.</p>
+                    <p>This code needs to come before the next chunk or it will be unreachable, because the next chunk of code gives the render method a return. </p>
+
+                        <pre>
+                            <code class="language-jsx">
+                                
+                                        return (
+                                            &lt;button onClick={()=> this.setState({clickMe: true})}&gt;Click Me!&lt;/button&gt;
+                                
+                                        )
+                                    }
+                                }
+                                
+                            </code>
+                        </pre>
+
+                    <p>So, after the Component loads, this return creates a button, which via the <mark>onClick</mark> event handler, is able to change the <mark>clickMe</mark> property from false to <mark>true</mark>.</p>
+                    <p>When React Components' state changes, the component reloads - and since the state is changed to true, when the Component reloads it will create our "Powered by React" header instead of the button.</mark></p>
+
+                    <h3>Step 4: Tell React and Babel To Do Their Thing</h3>
+                    <p>We're doing pretty good so far! Our React JSX is all in place. Our button works, and we have a good understanding of how Components work. If we wanted to, we could reuse the Component we have for all sorts of buttons on our website.</p>
+                    <p>Wait. Our button works? No. It doesn't. We still need to import our LearnReact.js file. And what about all the JSX we coded? We need Babel to kick in to translate all of that to the browser.</p>
+                    <p>Let's switch over to our index.html and finish up.</p>
+                    <p>Right below our previous imports, let's add the following:</p>
+
+                        <pre>
+                            <code class="language-jsx">
+                                
+                                &lt;script type="text/babel" src="LearnReact.js"&gt;&lt;/script&gt;
+                                &lt;script type="text/babel"&gt;
+                                    ReactDOM.render(&lt;LearnReact/&gt;, document.getElementById('PutReactHere'));
+                                &lt;/script&gt;
+                                
+                            </code>
+                        </pre>
+
+                    <p>Now we're done - by adding the <mark>type</mark> tag to these imports, we're making sure the HTML page is grabbing all this React JSX code after Babel has deciphered it for us.</p>
+                    <p>We've also added one last tiny script which calls <mark>ReactDOM.render</mark> to put its returns inside the Div we created earlier.</p>
+
+                    <h3>Step 5: Celebrate and Enjoy Your New Skills With React</h3>
+                    <p>We did it! We've successfully created and integrated a React.js Component into our existing website. We have a good understanding of how Components work, learned JSX, and even though this was a very small exercise, we can take what we learned and extend it into future projects.</p>
+                    <p>Not only that, but we've refeshed ourselves on multiple webdev topics, such as CDN, DOM, and regular old JavaScript.</p>
+                    <p>Our website is now officially powered by React, and the world is our oyster.</p>
+                    <p>There is huge room to expand on what we've learned so far, and it will be exciting to see what we can pull off now that we understand how React works.</p>
+                    <p>For now, I leave you with an inspirational quote:</p>
+
+                    <br>
+                    <h3><i>"It Is My Ordeal, You Could Say. To Test Myself, To Better Myself, To Fell Ever Greater Foes."</i> - Iron Fist Alexander</h3>
+                    <br>
+                    <br>
+                    <p>To see this exercise in action, feel free to visit <button onclick="window.open('index.html','_blank');">jolan.dev</button></p>
+                    <br>
+                    <br>
+                    <button class="morebutton" onclick="window.open('https://prismjs.com/index.html','_blank');">Code blocks powered by Prism.js</button>
+                    <br>
+                    <br>
 
 
 
