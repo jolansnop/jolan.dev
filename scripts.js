@@ -25,3 +25,5 @@ function getExtra() {
     };
     xml.send();
 }
+
+//React stuff below for jolan.dev/react.html

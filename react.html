@@ -8,12 +8,12 @@
 		<title>Learn React</title>
 		<link rel="icon" type="image/x-icon" href="imgs/logo.png">
 		<link href="style.css" type="text/css" rel="stylesheet">
+        <link rel="stylesheet" href="prism.css">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
 		
-		<script defer src="scripts.js">
-		</script>
+		<script defer src="scripts.js"></script>
 			
 	</head>
 	
@@ -22,20 +22,54 @@
 				<img class="imgheader" src="imgs/logo.png" alt="My Logo">
 				<!-- original image  -->
 				<h1>Learn React</h1>
+                <h2>Julien Senopati</h2>
 				<br>
 		</div>
 			
 		<div class="content">
-				<p>So, you're learning coding and WebDev has piqued your interest.</p>
                 <p>Allow me to introduce you to the most powerful JavaScript based tool for building website user interfaces:</p>
                 <h2>React.js</h2>
+                <p>React is maintained by Meta. I've been learning it using various resources, namely free resources like YouTube tutorials, and the official tutorial on the Reactjs.org website.</p>
+                <p>On this page, I am going to attempt to show you what I've learned and help you get a grasp on React as painlessly as possible. </p>
+                <p>My personal website at <button onclick="window.open('index.html','_blank');">jolan.dev</button> is severely lacking some modern UI styling and is just plain boring, so this tutorial is going to focus on using React to make it look better.</p>
+                <p>If you don't have a website of your own to follow along with this tutorial, it's incredibly easy to get one up and running using <button onclick="window.open('https://pages.github.com/','_blank');">GitHub Pages</button></p>
 
 				<div>
+                    <h2>Lets get started.</h2>
+                    <h3>Step 1: Add React to your HTML</h3>
+                    <p>I prefer to use Visual Studio Code for webdev coding, so this tutorial will be specific for that. Regardles of what your IDE of choice is, you should be able to follow along.</p>
+                    <p>To get React running on our site, we need to add it to the JavaScript sources.</p>
+                    <p>Make sure to place these source tags just above your closing &lt;/body&gt; tag.</p>
+                    <br>
+
+                        <pre>
+                        <code class="language-html">
+                            
+                                &lt;script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin&gt;&lt;/script&gt;
+                                &lt;script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin&gt;&lt;/script&gt;
+                                &lt;/body&gt;
+                            
+                        </code>
+                        </pre>
+
+                    <p>This step is self explanatory: we're just telling the browser to load the React library. The reason we want this script tag at the bottom is so that the website's content get loaded before the browser starts to grab and parse all the libraries the site is asking for. By and large, this is a quality-of-life feature. We don't want our user to be waiting a year before the website loads because it's grabbing libaries.</p>
+                    <p>If you prefer to keep your script tags at the top of the page (like me) an alternate way of making sure the page loads fast while still having your script tags at the top is to use <mark>defer</mark> in your opening script tag. </p>
+
+                        <pre>
+                            <code class="language-html">
+                                
+                                    &lt;script defer src="https://unpkg.com/react@18/umd/react.development.js" crossorigin&gt;&lt;/script&gt;
+                                    &lt;script defer src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin&gt;&lt;/script&gt;
+                                
+                            </code>
+                            </pre>
+
+
+                    <h3>Step 2: Create a Component</h3>
+
 
 				</div>
-
-				<br>
-
 		</div>
+        <script src="prism.js"></script>
     </body>
 </html>
