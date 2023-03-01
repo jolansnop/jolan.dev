@@ -17,31 +17,23 @@
 	</head>
 	
 	<body>
-		<div class="header">
-				<img class="imgheader" src="imgs/logo.png" alt="My Logo">
-				<!-- original image  -->
-				<h1>Julien Senopati</h1>
-				<br>
-
-				<div id="PutReactHere">
-				</div>
+		<div class="header" id="PutReactHereAgain">
 		</div>
+
+		
 			
 		<div class="content">
-				<p>Hello!</p>
+
+			<div class="react" id="PutReactHere">
+			</div>
+
+				<hr>
 
 				<div>
 
-				<p>My name is Julien, my friends call me Jolan. It's a nickname that stuck, and ended up as a pseudonym I use for most of my online activity.</p>
-				<p>This is an extremely early-stage rough draft for my personal website.</p>
-				<p>I'm currently studying Software Development at Southern Alberta Institute of Technology.</p>
-				<p>I've always had a passion for computers. From a young age, I was often glued to my dad's old AMD Athlon 62 X2 rig.</p>
-				<p>Some of my favorite passtimes include music production with FL Studio, video editing with VEGAS Pro 17, and I also am really into game modding. I've spent an ungodly amount of time building and troubleshooting modlists for Skyrim and Fallout: New Vegas. </p>
-				<p>I inherited a love for progressive rock from my dad, but have an appreciation for music of all genres. I mainly listen to electronic music when I'm coding.</p>
-				<p>Click <button onclick="window.open('https://open.spotify.com/playlist/7tx0e7wBUyNIE6nXjh9RjQ?si=e3e5e9d8c54d4007','_blank');">this</button> to see my coding playlist.</p>
-				<p>Other than that, my 
-					
-					<button id="catbutton">cat</button> is cute. She makes for a good calming presence when I'm ripping my hair out over JavaScript errors.
+				<p>I'm Julien, my friends call me Jolan. It's a nickname that stuck, and ended up as a pseudonym I use for most of my online activity.</p>
+				<p><button onclick="window.open('https://open.spotify.com/playlist/7tx0e7wBUyNIE6nXjh9RjQ?si=e3e5e9d8c54d4007','_blank');">My coding playlist</button></p>
+				<p><button id="catbutton">My cat being cute</button></p>
 
 					<div class="modal" id="modal">
 						<div class="modal-header">
@@ -50,15 +42,22 @@
 						</div>
 						<div class="modal-body"><img class="catpic" src="imgs/cat.jpg" alt="my cat"></div>
 					</div>
-
+					
 					<br>
-					I have a class assignment to share what I've learned about React.js. Click <button onclick="window.open('react.html','_blank');">here</button> to visit that page.
+					<hr>
+					<br>
+					<button onclick="window.open('react.html','_blank');">Blog Post 1</button>
+					<p>Learning React Components</p>
+					<br>
+					<br>
+					<button>Blog Post 2</button>
+					<p>Coming Soon</p>
 
 				</div>
 
 				<br>
-
-			
+				<hr>
+				<br>
 
 			<button class="morebutton" id="morebutton">Click for more</button>
 
@@ -73,6 +72,9 @@
 
 		<script type="text/babel">
 			ReactDOM.render(<LearnReact/>, document.getElementById('PutReactHere'));
+		</script>
+		<script type="text/babel">
+			ReactDOM.render(<LogoSpin/>, document.getElementById('PutReactHereAgain'));
 		</script>
 
     </body>
