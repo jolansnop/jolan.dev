@@ -12,8 +12,7 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
 		
-		<script defer src="scripts.js">
-		</script>
+		<script defer src="scripts.js"></script>
 			
 	</head>
 	
@@ -23,6 +22,9 @@
 				<!-- original image  -->
 				<h1>Julien Senopati</h1>
 				<br>
+
+				<div id="PutReactHere">
+				</div>
 		</div>
 			
 		<div class="content">
@@ -63,6 +65,15 @@
 		</div>
 
 		<span class='extra' id='extrastuff'></span>
+
+		<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+		<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+		<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+		<script type="text/babel" src="LearnReact.js"></script>
+
+		<script type="text/babel">
+			ReactDOM.render(<LearnReact/>, document.getElementById('PutReactHere'));
+		</script>
 
     </body>
 </html>

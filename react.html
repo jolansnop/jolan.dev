@@ -33,11 +33,18 @@
                 <p>On this page, I am going to attempt to show you what I've learned and help you get a grasp on React as painlessly as possible. </p>
                 <p>My personal website at <button onclick="window.open('index.html','_blank');">jolan.dev</button> is severely lacking some modern UI styling and is just plain boring, so this tutorial is going to focus on using React to make it look better.</p>
                 <p>If you don't have a website of your own to follow along with this tutorial, it's incredibly easy to get one up and running using <button onclick="window.open('https://pages.github.com/','_blank');">GitHub Pages</button></p>
+                <p>Since this is our first foray into React, we're going to focus on wrapping our heads around what React is and how it works before we begin to completely overhaul our website, so for now, we're going to focus on building a small Hello World style function using React.</p>
+                <p>Normally, React is used alongside Node.js and other libraries/tools for developing big web applications. We're going to focus on quick website integration using CDN - Content Delivery Networks - which is like using imports in Java, just through the internet.</p>
 
 				<div>
                     <h2>Lets get started.</h2>
+                    <h3>Why use react?</h3>
+                    <p>Before we start jumping into our IDE's and getting in the zone, let's discuss why we should even use React in the first place:</p>
+                    <p>Simple: React is easy and flexible.</p>
+                    <p>React is designed from the ground up to be easily maintained, robust, and integratable. You can use it on websites, web applications, and even in desktop applications.</p>
+                    <p>React uses "Components" which are chunks of code that are reusable and independant. This makes it incredibly easy to integrate React and eventually convert existing code into React. This is actually exactly what Facebook / Meta did. Once they created React, they began to rewrite the entirety of Facebook and Instagram to use it, and as far as popular websites with good UI go, Facebook and moreso Instagram definitely come to mind.</p>
                     <h3>Step 1: Add React to your HTML</h3>
-                    <p>I prefer to use Visual Studio Code for webdev coding, so this tutorial will be specific for that. Regardles of what your IDE of choice is, you should be able to follow along.</p>
+                    <p>I prefer to use Visual Studio Code for webdev coding, so this tutorial will be specific for that. Regardless of what your IDE of choice is, you should be able to follow along.</p>
                     <p>To get React running on our site, we need to add it to the JavaScript sources.</p>
                     <p>Make sure to place these source tags just above your closing &lt;/body&gt; tag.</p>
                     <br>
@@ -47,12 +54,13 @@
                             
                                 &lt;script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin&gt;&lt;/script&gt;
                                 &lt;script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin&gt;&lt;/script&gt;
+                                &lt;script src="https://unpkg.com/babel-standalone@6/babel.min.js"&gt;&lt;/script&gt;
                                 &lt;/body&gt;
                             
                         </code>
                         </pre>
 
-                    <p>This step is self explanatory: we're just telling the browser to load the React library. The reason we want this script tag at the bottom is so that the website's content get loaded before the browser starts to grab and parse all the libraries the site is asking for. By and large, this is a quality-of-life feature. We don't want our user to be waiting a year before the website loads because it's grabbing libaries.</p>
+                    <p>This step is self explanatory: we're just telling the browser to load the React library, the same way we tell it to load our local script files. The reason we want this script tag at the bottom is so that the website's content get loaded before the browser starts to grab and parse all the libraries the site is asking for. By and large, this is a quality-of-life feature. We don't want our user to be waiting a year before the website loads because it's grabbing libaries.</p>
                     <p>If you prefer to keep your script tags at the top of the page (like me) an alternate way of making sure the page loads fast while still having your script tags at the top is to use <mark>defer</mark> in your opening script tag. </p>
 
                         <pre>
@@ -60,13 +68,70 @@
                                 
                                     &lt;script defer src="https://unpkg.com/react@18/umd/react.development.js" crossorigin&gt;&lt;/script&gt;
                                     &lt;script defer src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin&gt;&lt;/script&gt;
+                                    &lt;script defer src="https://unpkg.com/babel-standalone@6/babel.min.js"&gt;&lt;/script&gt;
                                 
                             </code>
-                            </pre>
+                        </pre>
+                    <p>For this tutorial, we're going to keep it simple and just place our source tags near the bottom.</p>
+                    <p>You might notice that the last line there is importing something called Babel. We're going to use Babel, because some of our code is going to be JSX, which is essentially React's way of putting HTML inside of JavaScript. It'll come in handy as Babel is a JavaScript transcompiler that essentially can translate the latest JavaScript into whatever potentially older JavaScript the browser is compatible with. It's a compatibility guarantee, and is what's going to let us get away with some of the weird hybrid html-js we're coding.</p>
 
 
                     <h3>Step 2: Create and Add a Component</h3>
                     <p>The first part of this step is figuring out where on the page we want to put a React Component.</p>
+                    <p>In this case, lets put it near the top of the page where it's easily viewable.</p>
+                    <p>Create a new Div and give it an ID.</p>
+
+                        <pre>
+                            <code class="language-html">
+                                
+                                &lt;div id="PutReactHere"&gt;&lt;/div&gt;
+                                
+                            </code>
+                        </pre>
+
+                    <p>Next, we need to start writing some React.js. In your IDE of choice, create a new JavaScript file and name it whatever you want.</p>
+                    <p>I'm going to name mine LearnReact.js.</p>
+                    <p>I want to have a React Component that is a button, and when I click the button I want it to display "Powered by React.js".</p>
+                    <p>So, let's open up our new LearnReact.js, and punch in the following:</p>
+
+                        <pre>
+                            <code class="language-jsx">
+                                
+                                class LearnReact extends React.Component {
+                                    constructor(props){
+                                        super(props);
+                                        this.state = {
+                                            clickMe: false
+                                        }
+                                    }
+                                
+                                    render(){
+                                
+                                        if(this.state.clickMe){
+                                            return (
+                                            <h2>Powered by React.js</h2>
+                                            )
+                                        }
+                                
+                                        return (
+                                            <button onClick={()=> this.setState({clickMe: true})}>Click Me!</button>
+                                
+                                        )
+                                    }
+                                }
+                                
+                            </code>
+                        </pre>
+
+                    <h3>Step 3: Understand</h3>
+                    <p>Okay, let's break it down, step by step, and make sure we know what's going on.</p>
+                    <p>We have our imports set up. React's library is loaded, ReactDOM is loaded, and Babel is loaded. We already know what Babel is for, so let's briefly talk about the others. </p>
+                    <p>Well, the React library is... React. Without this import, all the component code in Step 2 simply won't work.</p>
+                    <p>ReactDOM is a package that handles DOM specific methods, namely in our case, <mark>render()</mark>.</p>
+                    <p>A quick review of DOM: DOM stands for Document Object Model. This is the data representation of everything on the website. By loading ReactDOM, we can manipulate the DOM (and by extension, the site itself) by using React-specific methods.</p>
+                    <p>Alright, we're up to speed. Let's break down the React code itself.</p>
+                    
+
 
 
 				</div>
