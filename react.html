@@ -21,12 +21,13 @@
 				<!-- original image  -->
 				<h1>Learn React</h1>
                 <h2>Julien Senopati</h2>
-				<br>
 		</div>
 			
 		<div class="content">
                 <p>Allow me to introduce you to the most powerful JavaScript based tool for building website user interfaces:</p>
+                <hr>
                 <h2>React.js</h2>
+                <hr>
                 <p>React is maintained by Meta. I've been learning it using various resources, namely free resources like YouTube tutorials, and the official tutorial on the Reactjs.org website.</p>
                 <p>On this page, I am going to attempt to show you what I've learned and help you get a grasp on React as painlessly as possible. </p>
                 <p>My personal website at <button onclick="window.open('index.html','_blank');">jolan.dev</button> is severely lacking some modern UI styling and is just plain boring, so this tutorial is going to focus on using React to make it look better.</p>
@@ -35,17 +36,19 @@
                 <p>Normally, React is used alongside Node.js and other libraries/tools for developing big web applications. We're going to focus on quick website integration using CDN - Content Delivery Networks - which is like using imports in Java, just through the internet.</p>
 
 				<div>
+                    <hr>
                     <h2>Lets get started.</h2>
+                    <hr>
                     <h3>Why use react?</h3>
                     <p>Before we start jumping into our IDE's and getting in the zone, let's discuss why we should even use React in the first place:</p>
                     <p>Simple: React is easy and flexible.</p>
                     <p>React is designed from the ground up to be easily maintained, robust, and integratable. You can use it on websites, web applications, and even in desktop applications.</p>
                     <p>React uses "Components" which are chunks of code that are reusable and independant. This makes it incredibly easy to integrate React and eventually convert existing code into React. This is actually exactly what Facebook / Meta did. Once they created React, they began to rewrite the entirety of Facebook and Instagram to use it, and as far as popular websites with good UI go, Facebook and moreso Instagram definitely come to mind.</p>
+                    <hr>
                     <h3>Step 1: Add React to your HTML</h3>
                     <p>I prefer to use Visual Studio Code for webdev coding, so this tutorial will be specific for that. Regardless of what your IDE of choice is, you should be able to follow along.</p>
                     <p>To get React running on our site, we need to add it to the JavaScript sources.</p>
                     <p>Make sure to place these source tags just above your closing &lt;/body&gt; tag.</p>
-                    <br>
 
                         <pre>
                         <code class="language-html">
@@ -73,6 +76,7 @@
                     <p>For this tutorial, we're going to keep it simple and just place our source tags near the bottom.</p>
                     <p>You might notice that the last line there is importing something called Babel. We're going to use Babel, because some of our code is going to be JSX, which is essentially React's way of putting HTML inside of JavaScript. It'll come in handy as Babel is a JavaScript transcompiler that essentially can translate the latest JavaScript into whatever potentially older JavaScript the browser is compatible with. It's a compatibility guarantee, and is what's going to let us get away with some of the weird hybrid HTML/JS we're coding.</p>
 
+                    <hr>
 
                     <h3>Step 2: Create and Add a Component</h3>
                     <p>The first part of this step is figuring out where on the page we want to put a React Component.</p>
@@ -120,6 +124,7 @@
                                 
                             </code>
                         </pre>
+                        <hr></hr>
 
                     <h3>Step 3: Understand</h3>
                     <p>Okay, let's break down what we have so far, step by step, and make sure we know what's going on.</p>
@@ -178,6 +183,8 @@
 
                     <p>So, after the Component loads, this return creates a button, which via the <mark>onClick</mark> event handler, is able to change the <mark>clickMe</mark> property from false to <mark>true</mark>.</p>
                     <p>When React Components' state changes, the component reloads - and since the state is changed to true, when the Component reloads it will create our "Powered by React" header instead of the button.</mark></p>
+                    
+                    <hr>
 
                     <h3>Step 4: Tell React and Babel To Do Their Thing</h3>
                     <p>We're doing pretty good so far! Our React JSX is all in place. Our button works, and we have a good understanding of how Components work. If we wanted to, we could reuse the Component we have for all sorts of buttons on our website.</p>
@@ -199,6 +206,8 @@
                     <p>Now we're done - by adding the <mark>type</mark> tag to these imports, we're making sure the HTML page is grabbing all this React JSX code after Babel has deciphered it for us.</p>
                     <p>We've also added one last tiny script which calls <mark>ReactDOM.render</mark> to put its returns inside the Div we created earlier.</p>
 
+                    <hr>
+
                     <h3>Step 5: Celebrate and Enjoy Your New Skills With React</h3>
                     <p>We did it! We've successfully created and integrated a React.js Component into our existing website. We have a good understanding of how Components work, learned JSX, and even though this was a very small exercise, we can take what we learned and extend it into future projects.</p>
                     <p>Not only that, but we've refeshed ourselves on multiple webdev topics, such as CDN, DOM, and regular old JavaScript.</p>
@@ -206,13 +215,11 @@
                     <p>There is huge room to expand on what we've learned so far, and it will be exciting to see what we can pull off now that we understand how React works.</p>
                     <p>For now, I leave you with an inspirational quote:</p>
 
-                    <br>
+                    <hr>
                     <h3><i>"It Is My Ordeal, You Could Say. To Test Myself, To Better Myself, To Fell Ever Greater Foes."</i> - Iron Fist Alexander</h3>
-                    <br>
-                    <br>
+                    <hr>
                     <p>To see this exercise in action, feel free to visit <button onclick="window.open('index.html','_blank');">jolan.dev</button></p>
-                    <br>
-                    <br>
+                    <hr>
                     <button class="morebutton" onclick="window.open('https://prismjs.com/index.html','_blank');">Code blocks powered by Prism.js</button>
                     <br>
                     <br>
