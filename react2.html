@@ -24,7 +24,9 @@
 		</div>
 			
 		<div class="content">
+            <div class="welcomeback">
                 <p>Welcome back! It's time for another tutorial with our favourite Javascript library:</p>
+            </div>
                 <hr>
                 <h2>React.js</h2>
                 <hr>
@@ -38,7 +40,7 @@
                 <p>After all, React is primarily made for developing objectively good UI that is easy to adjust and maintain. So, in this blog post I wanted to review what exactly makes a User Interface "good", and how we can use React to build UI that the everyday user will like.</p>
                 <p>There's some basic concepts we're all familiar with that most blog platforms take care of automatically:
                     <br>
-                    <br>Colours need to be contrasted properly so that it's easily readable for the user. To my knowledge, most platmorms like Medium will just color the background with a blinding white (dark mode is a thing, guys. WHY???) so that the black-coloured text is juxtaposed against it.
+                    <br>Colours need to be contrasted properly so that it's easily readable for the user. To my knowledge, most platforms like Medium will just color the background with a blinding white (dark mode is a thing, guys. WHY???) so that the black-coloured text is juxtaposed against it.
                     <br>
                     <br>The UI needs to be responsive, so that a user on any kind of device with all sorts of different display sizes can still read your website. The next time you're browsing a website on your phone, try hitting the "Desktop Site" button. You might be surprised how many things are different about the layout.
                     <br>
@@ -49,7 +51,7 @@
                 <hr>
                 <p>I'll be honest - my ego was a little bit hurt when I read the feedback for my first blog post. I felt I did a pretty good job with my styling choices, but there was still a lot of criticism for certain things.</p>
                 <p>There were some people that didn't like that the text on the page is all center-justified, which is a super easy fix, and honestly, pretty understandable. I thought about how most articles you read online, or really, most text on the internet in general, tends to be left-justified. After some thinking, I decided that left-justified is probably the way to go from now on. Makes the site feel a bit more natural, I think.</p>
-                <p>Another minor criticism was about the colour choices. The background I use is a color fade from</p>
+                <p>Another minor criticism was about the colour choices. The background I use is a color fade from #614385 to #516395, which is a nice dark purple to a dark sky blue. To me, these colours are pleasing, but I suppose there's a reason most websites are either white or black.</p>
                 <p>What people REALLY didn't like, was the drop shadow behind the text. When I wrote the CSS for my site, I thought that having drop shadow would be a cool stylistic choice that would also improve readability - as it turns out, it was distracting. I decided we're going to get rid of it, regardless of the fact that I like it. The user is the priority.</p>
                 <p>Obviously, constructive criticism is exactly what it says it is - constructive. So, in the interest of building a better blog that users will hopefully like more than the first time, I decided to that this second post will focus on improving the layout and readability of this very page - and naturally, we've gotta do it with React. </p>
                 <hr>
@@ -57,5 +59,65 @@
                 <hr>
                 <h3>Do me a favour, and try these buttons below.</h3>
 
-                <div class="buttonLeft" id="PutReactHere">
+                <div class="tableRow">
+                    <div class="column" id="ChangeJust">
+                    </div>
+                    <div class="column" id="ChangeShadow">
+                    </div>
+                    <div class="column" id="ChangeBackColour">
+                    </div>
                 </div>
+
+                <p class="welcomeback">There you go, okay? I'm a benevolent god. You're welcome. (I'm kidding)</p>
+                
+                <h3>But how???</h3>
+                <p>I know right? it's actually pretty sweet. We're using React which is a Javascript library, which uses JSX, which is HTML inside Javascript, to insert Inline CSS into our HTML. It's a beautiful interplay of all these technologies coming together to form something even greater... or something.</p>
+                <p>I'm assuming you read the first blog post, so I'm going to skip a bit of the review and basics that we covered in the first post and jump straight into these new components.</p>
+                <p>There are three components in play here. We have the <mark>ChangeJust</mark> component, which grabs all the text except for certain classes and headers and changes the <mark>text-align</mark> property from center to left.</p>
+                <p>Next we have the <mark>ChangeShadow</mark> component, which grabs all text except certain elements like buttons and highlighted text and changes the <mark>text-shadow</mark> property from black to none.</p>
+                <p>Last, and the one that gave me the most trouble, is the <mark>ChangeBackColour</mark> component. This component specifically uses some good ol' vanilla Javascript to change the <mark>background-image</mark> property of the entire body tag. This one was tricky.</p>
+                    
+                    <pre>
+                        <code class="language-jsx">
+                                
+                            class LearnReact extends React.Component {
+                                constructor(props){
+                                    super(props);
+                                    this.state = {
+                                        clickMe: false
+                                    }
+                                }
+                            </code>
+                        </pre>
+
+
+                    
+                        <hr>
+                        <button class="morebutton" onclick="window.open('https://prismjs.com/index.html','_blank');">Code blocks powered by Prism.js</button>
+                        <br>
+                        <br>
+
+        </div>
+
+        
+
+    
+            <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+            <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+            <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+            <script type="text/babel" src="LearnReact2.js"></script>
+            <script src="prism.js"></script>
+    
+            <script type="text/babel">
+                ReactDOM.render(<ChangeJust/>, document.getElementById('ChangeJust'));
+            </script>
+            <script type="text/babel">
+                ReactDOM.render(<ChangeShadow/>, document.getElementById('ChangeShadow'));
+            </script>
+            <script type="text/babel">
+                ReactDOM.render(<ChangeBackColour/>, document.getElementById('ChangeBackColour'));
+            </script>
+
+    
+        </body>
+    </html>
