@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		
-		<title>Learn React</title>
+		<title>Learn React (Again)</title>
 		<link rel="icon" type="image/x-icon" href="imgs/logo.png">
 		<link href="style.css" type="text/css" rel="stylesheet">
         <link rel="stylesheet" href="prism.css">
@@ -67,6 +67,7 @@
                     <div class="column" id="ChangeBackColour">
                     </div>
                 </div>
+                <hr>
 
                 <p class="welcomeback">There you go, okay? I'm a benevolent god. You're welcome. (I'm kidding)</p>
                 
@@ -76,28 +77,247 @@
                 <p>There are three components in play here. We have the <mark>ChangeJust</mark> component, which grabs all the text except for certain classes and headers and changes the <mark>text-align</mark> property from center to left.</p>
                 <p>Next we have the <mark>ChangeShadow</mark> component, which grabs all text except certain elements like buttons and highlighted text and changes the <mark>text-shadow</mark> property from black to none.</p>
                 <p>Last, and the one that gave me the most trouble, is the <mark>ChangeBackColour</mark> component. This component specifically uses some good ol' vanilla Javascript to change the <mark>background-image</mark> property of the entire body tag. This one was tricky.</p>
+                <br>
+                <p>First, let's take a look at the ChangeJust component.</p>
+                <h3>Component 1: ChangeJust</h3>
                     
                     <pre>
                         <code class="language-jsx">
                                 
-                            class LearnReact extends React.Component {
-                                constructor(props){
+                            class ChangeJust extends React.Component {
+                                constructor(props) {
                                     super(props);
                                     this.state = {
-                                        clickMe: false
-                                    }
+                                        isChanged: false
+                                    };
+                                    this.handleClick = this.handleClick.bind(this);
                                 }
-                            </code>
-                        </pre>
+                                
+                                handleClick() {
+                                    this.setState(state => ({
+                                        isChanged: !state.isChanged
+                                    }));
+                                }
+                              
+                                render() {
+                                    const { isChanged } = this.state;
+                                    
+                                    return (
+                                    &lt;div&gt;
+                                        &lt;button onClick={this.handleClick}&gt;
+                                            {isChanged ? "Center-Justification" : "Left-Justification"}
+                                        &lt;/button&gt;
+                                        &lt;style&gt;{`body {text-align: ${isChanged ? "left" : "center"};}`}
+                                        &lt;/style&gt;
+                                    &lt;/div&gt;
+                                    );
+                                }
+                            }
+                        </code>
+                    </pre>
 
+                    <p>So, our component structure is the exact same as it was in the first blog post. We have a class which inherits <mark>React.Component</mark>, and it has one property, the boolean <mark>isChanged</mark>, which is stored in the <mark>state</mark> object.</p>
+                    <p>This is exactly like our component from last time, which had one boolean property called clickMe.</p>
+                    <p>This time, there's a little bit more going on in the component. On line 7 is where things change.</p>
 
-                    
-                        <hr>
-                        <button class="morebutton" onclick="window.open('https://prismjs.com/index.html','_blank');">Code blocks powered by Prism.js</button>
-                        <br>
-                        <br>
+                    <pre>
+                        <code class="language-jsx">
+                            this.handleClick = this.handleClick.bind(this);
+                        </code>
+                    </pre>
 
+                    <p>Our goal with this component is to be able to change the state object property by clicking a button, just like before.</p>
+                    <p>The big difference this time is that we want to be able to change the state back and forth. So, this line becomes necessary.</p>
+                    <p>What this line does is it binds the keyword <mark>this</mark> to the <mark>handleClick</mark> method, which is our event handler. Without the bind, we wouldn't be able to access the component's state or props because when we use <mark>this</mark> in the event handler method, it would be referring to the global object instead of the component instance.</p>
+                    <p>So, we put the bind in the component's constuctor to ensure this doesn't happen. Now, when we call <mark>handleClick</mark>, the <mark>this</mark> keyword in it will always refer to the component instance.</p>
+                    <br>
+                    <p>Next, we should break down how our event handler method works.</p>
+
+                    <pre>
+                        <code class="language-jsx">
+                                handleClick() {
+                                    this.setState(state => ({
+                                        isChanged: !state.isChanged
+                                    }));
+                                }
+                        </code>
+                    </pre>
+
+                    <p>The handleClick method is what changes the component's state. It uses the <mark>setState</mark> method to update the state object to the opposite of it's current value.</p>
+                    <p>This is how are able to use the component as a toggle for left or center justification.</p>
+                    <br>
+                    <p>Finally, is our render method.</p>
+
+                    <pre>
+                        <code class="language-jsx">
+                                render() {
+                                    const { isChanged } = this.state;
+                                    
+                                    return (
+                                    &lt;div&gt;
+                                        &lt;button onClick={this.handleClick}&gt;
+                                            {isChanged ? "Center-Justification" : "Left-Justification"}
+                                        &lt;/button&gt;
+                                        &lt;style&gt;{`body {text-align: ${isChanged ? "left" : "center"};}`}
+                                        &lt;/style&gt;
+                                    &lt;/div&gt;
+                        </code>
+                    </pre>
+
+                    <p>Just like last time, our render method is what gives us a return for the component.</p>
+                    <p>The first line de-structures the <mark>isChanged</mark> property of the state object, and assigns it to a constant variable. After that, the method returns some JSX code.</p>
+                    <p>Within the JSX code, we have a button that points over to the <mark>handleClick</mark> method, which gets called when said button gets clicked.</p>
+                    <p>Since a <mark>const</mark> is a constant variable which cannot be changed, we can only change its value by changing the value of the state object.</p>
+                    <p>Remember, when a state object changes, the component reloads, so when the <mark>handleClick</mark> method is called by clicking the button, the component reloads showing the opposite value thanks to the previous chunk of code.</p>
+                    <p>This is overall very similar to the button we built in the first blog post, but this one is better. It's more robust and gives the user the option to reverse their choice.</p>
+                    <br>
+
+                    <p>The second component is essentially the exact same thing.</p>
+                    <h3>Component 2: ChangeShadow</h3>
+
+                    <pre>
+                        <code class="language-jsx">
+                                
+                            class ChangeShadow extends React.Component {
+                                constructor(props) {
+                                    super(props);
+                                    this.state = {
+                                        isChanged: false
+                                    };
+                                    this.handleClick = this.handleClick.bind(this);
+                                }
+                                
+                                handleClick() {
+                                    this.setState(state => ({
+                                        isChanged: !state.isChanged
+                                    }));
+                                }
+                            
+                                render() {
+                                    const { isChanged } = this.state;
+                                    
+                                    return (
+                                    &lt;div>
+                                        &lt;button onClick={this.handleClick}&gt;
+                                            {isChanged ? "Drop Shadow On" : "Drop Shadow Off"}
+                                        &lt;/button&gt;
+                                        &lt;style&gt;{`body {text-shadow: ${isChanged ? "none" : "2px 2px 3px black"};}`}
+                                        &lt;/style&gt;
+                                    &lt;/div&gt;
+                                    );
+                                }
+                            }
+                        </code>
+                    </pre>
+
+                    <p>Most of the code is the exact same since the component behaves almost exactly the same as the first.</p>
+                    <p>The only difference here is in our JSX.</p>
+                    <p>Since this component is handling drop shadow instead of text alignment, all it's doing is toggling the corresponding CSS property between a black color with size specifications and <mark>none</mark>.</p>
+                    <br>
+                    <p>Our last component is a little bit different.</p>
+                    <h3>Component 3: ChangeBackColour</h3>
+                    <p>I spent a lot of time figuring this one out since changing the background of the body tag is apparently hard using inline CSS injected by Javascript. (or at least, hard for me.)</p>
+                    <p>At first, I figured I could just inject inline CSS using JSX, which is the exact approach that the other two components use, but for some reason this wasn't working. The inline CSS was getting injected into the HTML no problem, but the body was still using the <mark>background-image</mark> styling from the external CSS sheet.</p>
+                    <p>I tried using the <mark>!important</mark> tag in the CSS, which gives it priority, but that didn't help. At some point, I remembered that things like <mark>innerHTML</mark> exist. So, I figured I could look for a vanilla Javascript method that changes the body's DOM specifically, and change the background colour that way.</p>
+                    <p>To accomodate the background colour change, I also decided to use some JSX to change the colours of highlighted text.</p>
+
+                    <pre>
+                        <code class="language-jsx">
+                                
+                            class ChangeBackColour extends React.Component {
+                                constructor(props) {
+                                    super(props);
+                                    this.state = {
+                                        isChanged: false
+                                    };
+                                    this.handleClick = this.handleClick.bind(this);
+                                }
+                                
+                                handleClick() {
+                            
+                                    const { isChanged } = this.state;
+                            
+                                    if (isChanged) {
+                                        document.body.style.background = "linear-gradient(to bottom, #614385, #516395)";
+                            
+                                    } else {
+                                        document.body.style.background = "#313b4b"
+                                    }
+                            
+                                    this.setState(state => ({
+                                        isChanged: !state.isChanged
+                                    }));
+                                }
+                            
+                                render() {
+                                    const { isChanged } = this.state;
+                                    
+                                    return (
+                                    &lt;div&gt;
+                                        &lt;button onClick={this.handleClick}&gt;
+                                            {isChanged ? "Dark Mode Off" : "Dark Mode On"}
+                                        &lt;/button&gt;
+                                        &lt;style&gt;
+                                            {`mark {background-color: ${isChanged ? "#FFC57D" : "black"};
+                                                color: ${isChanged ? "black" : "white"};`}
+                                        &lt;/style&gt;
+                                    &lt;/div&gt;
+                                    );
+                                }
+                            }
+                        </code>
+                    </pre>
+
+                    <p>Let's break it down. This code is a React component with vanilla Javascript methods to change the DOM instead of relying on JSX to inject inline CSS.</p>
+                    <p>A lot of it should look very familiar. The constructor section is the same. We have the same <mark>isChanged</mark> property initialized as false, and we also have the same <mark>bind</mark> code for the event handler.</p>
+                    <p>The difference shows up in the event handler method, <mark>handleClick()</mark>.</p>
+
+                    <pre>
+                        <code class="language-jsx">
+                                
+                                handleClick() {
+                            
+                                    const { isChanged } = this.state;
+                            
+                                    if (isChanged) {
+                                        document.body.style.background = "linear-gradient(to bottom, #614385, #516395)";
+                            
+                                    } else {
+                                        document.body.style.background = "#313b4b"
+                                    }
+                            
+                                    this.setState(state => ({
+                                        isChanged: !state.isChanged
+                                    }));
+                                }
+                        </code>
+                    </pre>
+
+                    <p>The <mark>const</mark> assigned to the state object is the same as before, but the <mark>if else</mark> statement is new.</p>
+                    <p>It's a very easy statement to understand. It reads the value of the <mark>isChanged</mark> vaariable, and based on its value it then uses an HTML DOM style object, <mark>document.body.style.background</mark>, to assign a new colour to the body background.</p>
+                    <p>Then, it calls the <mark>setState</mark> method to assign the opposite boolean value to the component instance state object.</p>
+                    <p>After that, the <mark>render</mark> method kicks in which spits out a new button and some inline CSS to change the colour of anything inside <mark>mark</mark> tags.</p>
+                    <br>
+                    <p>Like I said before, this last component had me stumped for a while, but to absolutely no one's surprise, good ol' <button onclick="window.open('https://www.w3schools.com/jsref/prop_style_background.asp','_blank');">W3Schools</button> was what saved me.</p>
+                    <br>
+                    <p>Anyway, that about covers it. Thanks to your feedback, I learned how to build React components that are a little more user friendly and robust, and now this blog is all the better for it!</p>
+                    <p>At the click of a button (or three), you can now change my bad CSS styling choices on the fly, whenever you want! Maybe next time I'll code a component for every single CSS style in my stylesheet for you to play with!!!</p>
+                    <br>
+                    <p>Do you feel bad yet? You should. I did this for you. You tore me down and now I've become a slightly better coder thanks to your brutal DECONSTUCTIVE CRITICISM!</p>
+                    <br>
+
+                    <h3>I'm just kidding. This was fun. React is pretty cool, and I sincerely hope these two blog posts have been as enjoyable for you to read as they were for me to write. If I helped you learn something or at least entertained you for a couple minutes, mission accomplished.</h3>
+                    <h2>Thanks for reading. Take care.</h2>
+                    <hr>
+                    <h3><del><i>"I finally rest, and watch the sunrise on a grateful universe. The hardest choices require the strongest wills."</i> - Thanos</del></h3>
+                    <h3><i>"Given time, technique never fails."</i> - Smithing Master Hewg</del></h3>
+                    <hr>
+
+            <div class="welcomeback"><button class="morebutton" onclick="window.open('https://prismjs.com/index.html','_blank');">Code blocks powered by Prism.js</button></div>
         </div>
+        
+
+        
 
         
 
