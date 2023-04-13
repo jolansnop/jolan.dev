@@ -107,6 +107,29 @@ class ChangeBackColour extends React.Component {
 }
 
 
+//just for fun.
+class LogoSpin extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            speed: 6
+        }
+    }
+
+    render(){
+
+        return (
+            <div>
+            <img onMouseEnter={()=> this.setState({speed: 0.3})}
+             onMouseOut={()=> this.setState({speed: 6})} 
+             style={{animation: `spin ${this.state.speed}s linear infinite`}} 
+             className="imgheader" src="imgs/logo.png" alt="img"/>
+            <h1>Learn React 2: User Friendly UI</h1>
+            </div>
+        )
+    }
+}
+
 //original toggle dark mode / background color component. wrote new one following conventions of other components since this one puts inlne CSS inside the body tag instead of the button div.
 /*class ChangeBackColour extends React.Component {
     constructor(props) {
